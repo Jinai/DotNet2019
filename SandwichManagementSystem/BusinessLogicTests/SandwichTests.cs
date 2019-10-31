@@ -32,12 +32,10 @@ namespace SMSBusinessLogicTests
             sand2.Ingredients.Add(ing4);
 
             // Assert
-            Assert.IsTrue(sand1.HasAllergen());
             Assert.AreEqual("Peanut butter and jelly sandwich - Peanut butter*, Jelly", sand1.ToString(EN));
             Assert.AreEqual("Sandwich beurre de cacahuète et confiture - Beurre de cacahuète*, Confiture", sand1.ToString(FR));
             Assert.AreEqual("Broodje pindakaas en jam - Pindakaas*, Jam", sand1.ToString(NL));
 
-            Assert.IsFalse(sand2.HasAllergen());
             Assert.AreEqual("Ham and cheese sandwich - Ham, Cheese", sand2.ToString(EN));
             Assert.AreEqual("Sandwich jambon et fromage - Jambon, Fromage", sand2.ToString(FR));
             Assert.AreEqual("Broodje ham en kaas - Ham, Kaas", sand2.ToString(NL));
