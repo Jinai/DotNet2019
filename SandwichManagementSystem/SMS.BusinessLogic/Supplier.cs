@@ -3,23 +3,23 @@ using System.Linq;
 
 namespace SMS.BusinessLogic
 {
-    public class Fournisseur
+    public class Supplier
     {
         public string Name { get; set; }
         public string ContactName { get; set; }
         public string Email { get; set; }
         public Language LanguageChoice { get; set; }
         public List<Sandwich> Sandwiches { get; }
-        public List<Pain> Pains { get; }
+        public List<Bread> Pains { get; }
 
-        public Fournisseur(string name, string contactName, string email, Language languageChoice)
+        public Supplier(string name, string contactName, string email, Language languageChoice)
         {
             this.Name = name;
             this.ContactName = contactName;
             this.Email = email;
             this.LanguageChoice = languageChoice;
             this.Sandwiches = new List<Sandwich>();
-            this.Pains = new List<Pain>();
+            this.Pains = new List<Bread>();
         }
 
         public override string ToString()

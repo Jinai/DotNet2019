@@ -6,7 +6,7 @@ namespace SMS.BusinessLogic
     public class Sandwich
     {
         public TranslatedString Name { get; set; }
-        public Fournisseur Fournisseur { get; set; }
+        public Supplier Supplier { get; set; }
         public List<Ingredient> Ingredients { get; }
 
         public Sandwich()
@@ -14,10 +14,10 @@ namespace SMS.BusinessLogic
             this.Ingredients = new List<Ingredient>();
         }
 
-        public Sandwich(TranslatedString name, Fournisseur fournisseur) : this()
+        public Sandwich(TranslatedString name, Supplier supplier) : this()
         {
             this.Name = name;
-            this.Fournisseur = fournisseur;
+            this.Supplier = supplier;
         }
 
         public bool HasAllergen()

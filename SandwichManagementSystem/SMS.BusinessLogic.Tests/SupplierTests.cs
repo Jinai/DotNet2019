@@ -3,7 +3,7 @@
 namespace SMS.BusinessLogic.Tests
 {
     [TestClass]
-    public class FournisseurTests
+    public class SupplierTests
     {
         public static Language EN = Language.English;
         public static Language FR = Language.French;
@@ -20,11 +20,11 @@ namespace SMS.BusinessLogic.Tests
             var ts5 = new TranslatedString("Ham", "Jambon", "Ham");
             var ts6 = new TranslatedString("Cheese", "Fromage", "Kaas");
 
-            var fns1 = new Fournisseur("Fournisseur 1", "F1", "fournisseur1@gmail.com", EN);
+            var sup1 = new Supplier("Supplier 1", "S1", "supplier1@gmail.com", EN);
 
-            var sand1 = new Sandwich(ts1, fns1);
-            var sand2 = new Sandwich(ts2, fns1);
-            var sand3 = new Sandwich(new TranslatedString("A", "B", "C"), fns1);
+            var sand1 = new Sandwich(ts1, sup1);
+            var sand2 = new Sandwich(ts2, sup1);
+            var sand3 = new Sandwich(new TranslatedString("A", "B", "C"), sup1);
 
             var ing1 = new Ingredient(ts3, true);
             var ing2 = new Ingredient(ts4);
@@ -37,16 +37,16 @@ namespace SMS.BusinessLogic.Tests
             sand2.Ingredients.Add(ing3);
             sand2.Ingredients.Add(ing4);
 
-            fns1.Sandwiches.Add(sand1);
-            fns1.Sandwiches.Add(sand2);
-            fns1.Sandwiches.Add(sand3);
+            sup1.Sandwiches.Add(sand1);
+            sup1.Sandwiches.Add(sand2);
+            sup1.Sandwiches.Add(sand3);
 
             // Assert
-            Assert.AreEqual("Fournisseur 1 (fournisseur1@gmail.com)\nPeanut butter and jelly sandwich - Peanut butter*, Jelly\nHam and cheese sandwich - Ham, Cheese\nA - ", fns1.ToString());
-            fns1.LanguageChoice = FR;
-            Assert.AreEqual("Fournisseur 1 (fournisseur1@gmail.com)\nSandwich beurre de cacahuète et confiture - Beurre de cacahuète*, Confiture\nSandwich jambon et fromage - Jambon, Fromage\nB - ", fns1.ToString());
-            fns1.LanguageChoice = NL;
-            Assert.AreEqual("Fournisseur 1 (fournisseur1@gmail.com)\nBroodje pindakaas en jam - Pindakaas*, Jam\nBroodje ham en kaas - Ham, Kaas\nC - ", fns1.ToString());
+            Assert.AreEqual("Supplier 1 (supplier1@gmail.com)\nPeanut butter and jelly sandwich - Peanut butter*, Jelly\nHam and cheese sandwich - Ham, Cheese\nA - ", sup1.ToString());
+            sup1.LanguageChoice = FR;
+            Assert.AreEqual("Supplier 1 (supplier1@gmail.com)\nSandwich beurre de cacahuète et confiture - Beurre de cacahuète*, Confiture\nSandwich jambon et fromage - Jambon, Fromage\nB - ", sup1.ToString());
+            sup1.LanguageChoice = NL;
+            Assert.AreEqual("Supplier 1 (supplier1@gmail.com)\nBroodje pindakaas en jam - Pindakaas*, Jam\nBroodje ham en kaas - Ham, Kaas\nC - ", sup1.ToString());
         }
     }
 }
