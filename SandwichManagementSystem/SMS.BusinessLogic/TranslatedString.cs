@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SMSBusinessLogic
+namespace SMS.BusinessLogic
 {
     public class TranslatedString
     {

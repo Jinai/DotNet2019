@@ -1,4 +1,4 @@
-﻿namespace SMSBusinessLogic
+﻿namespace SMS.BusinessLogic
 {
     public class Ingredient
     {

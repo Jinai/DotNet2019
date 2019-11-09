@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SMSBusinessLogic;
 
-namespace SMSBusinessLogicTests
+namespace SMS.BusinessLogic.Tests
 {
     [TestClass]
     public class IngredientTests
