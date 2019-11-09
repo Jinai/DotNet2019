@@ -11,10 +11,13 @@ namespace SMSBusinessLogicTests
         public static Language NL = Language.Dutch;
 
         [TestMethod]
-        public void TestToStringWithoutAllergen()
+        public void Test_ToString_WithoutAllergen()
         {
-            var ing1 = new Ingredient("Ham", "Jambon", "Ham");
-            var ing2 = new Ingredient("Cheese", "Fromage", "Kaas");
+            var ts1 = new TranslatedString("Ham", "Jambon", "Ham");
+            var ts2 = new TranslatedString("Cheese", "Fromage", "Kaas");
+
+            var ing1 = new Ingredient(ts1);
+            var ing2 = new Ingredient(ts2);
 
             Assert.AreEqual("Ham", ing1.ToString(EN));
             Assert.AreEqual("Jambon", ing1.ToString(FR));
@@ -26,10 +29,13 @@ namespace SMSBusinessLogicTests
         }
 
         [TestMethod]
-        public void TestToStringWithAllergen()
+        public void Test_ToString_WithAllergen()
         {
-            var ing1 = new Ingredient("Peanut", "Cacahuète", "Pinda", true);
-            var ing2 = new Ingredient("Egg", "Oeuf", "Ei", true);
+            var ts1 = new TranslatedString("Peanut", "Cacahuète", "Pinda");
+            var ts2 = new TranslatedString("Egg", "Oeuf", "Ei");
+
+            var ing1 = new Ingredient(ts1, true);
+            var ing2 = new Ingredient(ts2, true);
 
             Assert.AreEqual("Peanut*", ing1.ToString(EN));
             Assert.AreEqual("Cacahuète*", ing1.ToString(FR));

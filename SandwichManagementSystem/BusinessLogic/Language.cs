@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SMSBusinessLogic
+﻿namespace SMSBusinessLogic
 {
     public enum Language
     {

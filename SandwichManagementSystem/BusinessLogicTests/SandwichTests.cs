@@ -1,7 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using SMSBusinessLogic;
 
 namespace SMSBusinessLogicTests
@@ -14,16 +11,24 @@ namespace SMSBusinessLogicTests
         public static Language NL = Language.Dutch;
 
         [TestMethod]
-        public void TestToString()
+        public void Test_ToString()
         {
             // Arrange
-            var sand1 = new Sandwich("Peanut butter and jelly sandwich", "Sandwich beurre de cacahuète et confiture", "Broodje pindakaas en jam", null);
-            var sand2 = new Sandwich("Ham and cheese sandwich", "Sandwich jambon et fromage", "Broodje ham en kaas", null);
+            var ts1 = new TranslatedString("Peanut butter and jelly sandwich", "Sandwich beurre de cacahuète et confiture", "Broodje pindakaas en jam");
+            var ts2 = new TranslatedString("Ham and cheese sandwich", "Sandwich jambon et fromage", "Broodje ham en kaas");
+            var ts3 = new TranslatedString("Peanut butter", "Beurre de cacahuète", "Pindakaas");
+            var ts4 = new TranslatedString("Jelly", "Confiture", "Jam");
+            var ts5 = new TranslatedString("Ham", "Jambon", "Ham");
+            var ts6 = new TranslatedString("Cheese", "Fromage", "Kaas");
 
-            var ing1 = new Ingredient("Peanut butter", "Beurre de cacahuète", "Pindakaas", true);
-            var ing2 = new Ingredient("Jelly", "Confiture", "Jam");
-            var ing3 = new Ingredient("Ham", "Jambon", "Ham");
-            var ing4 = new Ingredient("Cheese", "Fromage", "Kaas");
+            var sand1 = new Sandwich(ts1, null);
+            var sand2 = new Sandwich(ts2, null);
+            var sand3 = new Sandwich(new TranslatedString("A", "B", "C"), null);
+
+            var ing1 = new Ingredient(ts3, true);
+            var ing2 = new Ingredient(ts4);
+            var ing3 = new Ingredient(ts5);
+            var ing4 = new Ingredient(ts6);
 
             // Act
             sand1.Ingredients.Add(ing1);
@@ -39,17 +44,21 @@ namespace SMSBusinessLogicTests
             Assert.AreEqual("Ham and cheese sandwich - Ham, Cheese", sand2.ToString(EN));
             Assert.AreEqual("Sandwich jambon et fromage - Jambon, Fromage", sand2.ToString(FR));
             Assert.AreEqual("Broodje ham en kaas - Ham, Kaas", sand2.ToString(NL));
+
+            Assert.AreEqual("A - ", sand3.ToString(EN));
+            Assert.AreEqual("B - ", sand3.ToString(FR));
+            Assert.AreEqual("C - ", sand3.ToString(NL));
         }
 
         [TestMethod]
-        public void TestHasAllergen()
+        public void Test_HasAllergen()
         {
             // Arrange
             var sand1 = new Sandwich();
             var sand2 = new Sandwich();
 
-            var ing1 = new Ingredient() { Allergen = true };
-            var ing2 = new Ingredient() { Allergen = false };
+            var ing1 = new Ingredient() { IsAllergen = true };
+            var ing2 = new Ingredient() { IsAllergen = false };
 
             // Act
             sand1.Ingredients.Add(ing1);
