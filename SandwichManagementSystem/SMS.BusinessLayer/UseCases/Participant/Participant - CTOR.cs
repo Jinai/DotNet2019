@@ -2,7 +2,7 @@
 using SMS.DataLayer;
 using System;
 
-namespace SMS.BusinessLayer.UseCases.Participant
+namespace SMS.BusinessLayer.UseCases
 {
     public partial class Participant
     {

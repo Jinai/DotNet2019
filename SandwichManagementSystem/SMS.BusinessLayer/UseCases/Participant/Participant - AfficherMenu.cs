@@ -4,7 +4,7 @@ using SMS.Shared.BTO;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SMS.BusinessLayer.UseCases.Participant
+namespace SMS.BusinessLayer.UseCases
 {
     public partial class Participant
     {
