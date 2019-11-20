@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <RootNamespace>SMS.BusinessLayer</RootNamespace>
+    <AssemblyName>SMS.BusinessLayer</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SMS.DataLayer\SMS.DataLayer.csproj" />
+    <ProjectReference Include="..\SMS.Shared\SMS.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
