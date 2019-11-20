@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMS.Shared", "SMS.Shared\SM
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5AD8BAD3-3A13-4565-839B-BAF2209E21BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS.Shared.Tests", "SMS.Shared.Tests\SMS.Shared.Tests.csproj", "{65B707B2-DAA4-46A7-A519-B2960BAD01DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +37,17 @@ Global
 		{B6A33415-8E83-4B62-95BB-67A6639A932A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6A33415-8E83-4B62-95BB-67A6639A932A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6A33415-8E83-4B62-95BB-67A6639A932A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65B707B2-DAA4-46A7-A519-B2960BAD01DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65B707B2-DAA4-46A7-A519-B2960BAD01DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65B707B2-DAA4-46A7-A519-B2960BAD01DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65B707B2-DAA4-46A7-A519-B2960BAD01DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D3E92240-74B8-4BEF-A640-2BD952D6E59C} = {5AD8BAD3-3A13-4565-839B-BAF2209E21BE}
+		{65B707B2-DAA4-46A7-A519-B2960BAD01DC} = {5AD8BAD3-3A13-4565-839B-BAF2209E21BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B204E2B-350F-4FC5-AEA9-0CAB159C89D7}
