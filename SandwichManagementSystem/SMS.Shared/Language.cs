@@ -1,4 +1,4 @@
-﻿namespace SMS.BusinessLogic
+﻿namespace SMS.Shared
 {
     public enum Language
     {

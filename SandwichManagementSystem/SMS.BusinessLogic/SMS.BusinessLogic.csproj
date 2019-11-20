@@ -8,4 +8,9 @@
     <AssemblyName>SMS.BusinessLogic</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SMS.DataLayer\SMS.DataLayer.csproj" />
+    <ProjectReference Include="..\SMS.Shared\SMS.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

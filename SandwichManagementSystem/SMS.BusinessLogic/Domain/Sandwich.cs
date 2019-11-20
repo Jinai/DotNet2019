@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using SMS.Shared;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace SMS.BusinessLogic
+namespace SMS.BusinessLogic.Domain
 {
     public class Sandwich
     {

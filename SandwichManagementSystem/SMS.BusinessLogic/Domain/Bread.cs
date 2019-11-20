@@ -1,4 +1,4 @@
-﻿namespace SMS.BusinessLogic
+﻿namespace SMS.BusinessLogic.Domain
 {
     public enum Bread
     {
@@ -9,6 +9,7 @@
         Rye,
         Brioche,
         Ciabatta,
+        Panini,
         Pita,
         Bio,
     }

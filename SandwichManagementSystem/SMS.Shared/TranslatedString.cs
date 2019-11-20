@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SMS.BusinessLogic
+namespace SMS.Shared
 {
     public class TranslatedString
     {
@@ -29,7 +29,7 @@ namespace SMS.BusinessLogic
                 Language.English => English,
                 Language.French => French,
                 Language.Dutch => Dutch,
-                _ => English,
+                _ => throw new Exception($"Unknown language: '{nameof(lang)}'")
             };
         }
     }

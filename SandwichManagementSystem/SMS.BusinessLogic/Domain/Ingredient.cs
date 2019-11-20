@@ -1,16 +1,19 @@
-﻿namespace SMS.BusinessLogic
+﻿using SMS.Shared;
+using System;
+
+namespace SMS.BusinessLogic.Domain
 {
     public class Ingredient
     {
-        public TranslatedString Name;
+        public TranslatedString Name { get; set; }
         public bool IsAllergen { get; set; }
 
         public Ingredient() { }
 
-        public Ingredient(TranslatedString name, bool allergen = false)
+        public Ingredient(TranslatedString name, bool isAllergen = false)
         {
-            this.Name = name;
-            this.IsAllergen = allergen;
+            this.Name = name ?? throw new ArgumentNullException(nameof(Name));
+            this.IsAllergen = isAllergen;
         }
 
         public string ToString(Language lang)

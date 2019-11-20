@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using SMS.Shared;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace SMS.BusinessLogic
+namespace SMS.BusinessLogic.Domain
 {
     public class Supplier
     {
@@ -12,14 +13,18 @@ namespace SMS.BusinessLogic
         public List<Sandwich> Sandwiches { get; }
         public List<Bread> Pains { get; }
 
-        public Supplier(string name, string contactName, string email, Language languageChoice)
+        public Supplier()
+        {
+            this.Sandwiches = new List<Sandwich>();
+            this.Pains = new List<Bread>();
+        }
+
+        public Supplier(string name, string contactName, string email, Language languageChoice) : this()
         {
             this.Name = name;
             this.ContactName = contactName;
             this.Email = email;
             this.LanguageChoice = languageChoice;
-            this.Sandwiches = new List<Sandwich>();
-            this.Pains = new List<Bread>();
         }
 
         public override string ToString()

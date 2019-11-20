@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SMS.BusinessLogic.Domain;
+using SMS.Shared;
 
 namespace SMS.BusinessLogic.Tests
 {
