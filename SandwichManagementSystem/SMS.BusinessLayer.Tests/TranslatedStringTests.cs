@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SMS.Shared;
 
-namespace SMS.BusinessLogic.Tests
+namespace SMS.BusinessLayer.Tests
 {
     [TestClass]
     public class TranslatedStringTests

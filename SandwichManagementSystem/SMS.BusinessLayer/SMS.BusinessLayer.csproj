@@ -4,8 +4,8 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
-    <RootNamespace>SMS.BusinessLogic</RootNamespace>
-    <AssemblyName>SMS.BusinessLogic</AssemblyName>
+    <RootNamespace>SMS.BusinessLayer</RootNamespace>
+    <AssemblyName>SMS.BusinessLayer</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

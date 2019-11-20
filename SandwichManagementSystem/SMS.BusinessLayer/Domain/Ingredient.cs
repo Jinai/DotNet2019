@@ -1,7 +1,7 @@
 ﻿using SMS.Shared;
 using System;
 
-namespace SMS.BusinessLogic.Domain
+namespace SMS.BusinessLayer.Domain
 {
     public class Ingredient
     {

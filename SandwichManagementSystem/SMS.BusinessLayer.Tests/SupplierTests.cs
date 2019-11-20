@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SMS.BusinessLogic.Domain;
+using SMS.BusinessLayer.Domain;
 using SMS.Shared;
 
-namespace SMS.BusinessLogic.Tests
+namespace SMS.BusinessLayer.Tests
 {
     [TestClass]
     public class SupplierTests

@@ -1,10 +1,10 @@
-﻿using SMS.BusinessLogic.Extensions;
+﻿using SMS.BusinessLayer.Extensions;
 using SMS.Shared;
 using SMS.Shared.BTO;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SMS.BusinessLogic.UseCases.Participant
+namespace SMS.BusinessLayer.UseCases.Participant
 {
     public partial class Participant
     {

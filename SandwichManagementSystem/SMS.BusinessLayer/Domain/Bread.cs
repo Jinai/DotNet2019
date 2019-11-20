@@ -1,4 +1,4 @@
-﻿namespace SMS.BusinessLogic.Domain
+﻿namespace SMS.BusinessLayer.Domain
 {
     public enum Bread
     {

@@ -1,10 +1,10 @@
-﻿using SMS.BusinessLogic.Domain;
+﻿using SMS.BusinessLayer.Domain;
 using SMS.Shared;
 using SMS.Shared.BTO;
 using System;
 using System.Linq;
 
-namespace SMS.BusinessLogic.Extensions
+namespace SMS.BusinessLayer.Extensions
 {
     public static class SandwichExtensions
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SMS.BusinessLogic.Domain
+namespace SMS.BusinessLayer.Domain
 {
     public class Sandwich
     {

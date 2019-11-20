@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyName>SMS.BusinessLogic.Tests</AssemblyName>
+    <AssemblyName>SMS.BusinessLayer.Tests</AssemblyName>
 
-    <RootNamespace>SMS.BusinessLogic.Tests</RootNamespace>
+    <RootNamespace>SMS.BusinessLayer.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SMS.BusinessLogic\SMS.BusinessLogic.csproj" />
+    <ProjectReference Include="..\SMS.BusinessLayer\SMS.BusinessLayer.csproj" />
     <ProjectReference Include="..\SMS.Shared\SMS.Shared.csproj" />
   </ItemGroup>
 

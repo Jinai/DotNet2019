@@ -1,8 +1,8 @@
-﻿using SMS.BusinessLogic.Domain;
+﻿using SMS.BusinessLayer.Domain;
 using SMS.DataLayer;
 using System;
 
-namespace SMS.BusinessLogic.UseCases.Participant
+namespace SMS.BusinessLayer.UseCases.Participant
 {
     public partial class Participant
     {
