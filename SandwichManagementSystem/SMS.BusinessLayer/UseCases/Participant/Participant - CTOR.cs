@@ -1,18 +1,15 @@
-﻿using SMS.BusinessLayer.Domain;
-using SMS.DataLayer;
+﻿using SMS.Shared.Interfaces;
 using System;
 
 namespace SMS.BusinessLayer.UseCases
 {
     public partial class Participant
     {
-        public IRepository<Sandwich, int> SandwichRepo { get; }
-        public IRepository<Ingredient, int> IngredientRepo { get; }
+        private IUnitOfWork UnitOfWork { get; }
 
-        public Participant(IRepository<Sandwich, int> sandwichRepo, IRepository<Ingredient, int> ingredientRepo)
+        public Participant(IUnitOfWork unitOfWork)
         {
-            SandwichRepo = sandwichRepo ?? throw new ArgumentNullException(nameof(sandwichRepo));
-            IngredientRepo = ingredientRepo ?? throw new ArgumentNullException(nameof(ingredientRepo));
+            UnitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
     }
 }

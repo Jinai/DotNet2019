@@ -1,25 +1,28 @@
 ﻿using SMS.Shared;
+using SMS.Shared.Enums;
+using SMS.Shared.Exceptions;
 using System;
 
 namespace SMS.BusinessLayer.Domain
 {
-    public class Ingredient
+    public class Ingredient : DomainObject
     {
         public TranslatedString Name { get; set; }
         public bool IsAllergen { get; set; }
 
-        public Ingredient() { }
-
-        public Ingredient(TranslatedString name, bool isAllergen = false)
-        {
-            this.Name = name ?? throw new ArgumentNullException(nameof(Name));
-            this.IsAllergen = isAllergen;
-        }
-
         public string ToString(Language lang)
         {
-            string name = this.Name.ToString(lang);
-            return (this.IsAllergen) ? name + "*" : name;
+            var name = Name.ToString(lang);
+            return (IsAllergen) ? name + "*" : name;
+        }
+
+        public override void CheckValidity()
+        {
+            base.CheckValidity();
+            if (Name == null)
+            {
+                throw new InvalidIngredientException($"{nameof(Name)} cannot be null");
+            }
         }
     }
 }

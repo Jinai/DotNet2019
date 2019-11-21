@@ -1,4 +1,4 @@
-﻿namespace SMS.Shared
+﻿namespace SMS.Shared.Enums
 {
     public enum Language
     {

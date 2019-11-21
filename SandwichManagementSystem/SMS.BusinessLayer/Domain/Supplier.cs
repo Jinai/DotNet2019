@@ -1,37 +1,31 @@
-﻿using SMS.Shared;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SMS.Shared.Enums;
+using SMS.Shared.Exceptions;
 
 namespace SMS.BusinessLayer.Domain
 {
-    public class Supplier
+    public class Supplier : DomainObject
     {
         public string Name { get; set; }
         public string ContactName { get; set; }
         public string Email { get; set; }
         public Language LanguageChoice { get; set; }
-        public List<Sandwich> Sandwiches { get; }
-        public List<Bread> Pains { get; }
+        public bool IsCurrentSupplier { get; set; }
 
-        public Supplier()
+        public override void CheckValidity()
         {
-            this.Sandwiches = new List<Sandwich>();
-            this.Pains = new List<Bread>();
-        }
-
-        public Supplier(string name, string contactName, string email, Language languageChoice) : this()
-        {
-            this.Name = name;
-            this.ContactName = contactName;
-            this.Email = email;
-            this.LanguageChoice = languageChoice;
-        }
-
-        public override string ToString()
-        {
-            string result = $"{Name} ({Email})\n";
-            result += string.Join("\n", Sandwiches.Select(s => s.ToString(LanguageChoice)));
-            return result;
+            base.CheckValidity();
+            if (string.IsNullOrEmpty(Name) || string.IsNullOrWhiteSpace(Name))
+            {
+                throw new InvalidSupplierException($"{nameof(Name)} cannot be null or empty");
+            }
+            if (string.IsNullOrEmpty(ContactName) || string.IsNullOrWhiteSpace(ContactName))
+            {
+                throw new InvalidSupplierException($"{nameof(ContactName)} cannot be null or empty");
+            }
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email))
+            {
+                throw new InvalidSupplierException($"{nameof(Email)} cannot be null or empty");
+            }
         }
     }
 }

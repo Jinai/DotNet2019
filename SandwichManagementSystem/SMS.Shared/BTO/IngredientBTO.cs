@@ -1,6 +1,6 @@
-﻿namespace SMS.Shared.DTO
+﻿namespace SMS.Shared.BTO
 {
-    public class IngredientDTO
+    public class IngredientBTO
     {
         public int Id { get; set; }
         public TranslatedString Name { get; set; }

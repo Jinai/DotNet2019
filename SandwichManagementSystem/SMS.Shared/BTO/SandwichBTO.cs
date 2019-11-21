@@ -1,8 +1,12 @@
-﻿namespace SMS.Shared.BTO
+﻿using System.Collections.Generic;
+
+namespace SMS.Shared.BTO
 {
     public class SandwichBTO
     {
-        public string Name { get; set; }
-        public string Ingredients { get; set; }
+        public int Id { get; set; }
+        public TranslatedString Name { get; set; }
+        public List<IngredientBTO> Ingredients { get; set; }
+        public SupplierBTO Supplier { get; set; }
     }
 }

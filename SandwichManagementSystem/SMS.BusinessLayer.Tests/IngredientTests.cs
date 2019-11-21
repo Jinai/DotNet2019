@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SMS.BusinessLayer.Domain;
 using SMS.Shared;
+using SMS.Shared.Enums;
 
 namespace SMS.BusinessLayer.Tests
 {

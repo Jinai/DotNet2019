@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace SMS.DataLayer.Entities
 {
@@ -11,10 +9,10 @@ namespace SMS.DataLayer.Entities
     {
         [Key]
         public int Id { get; set; }
-        [Column("Name")]
         public string NameEnglish { get; set; }
         public string NameFrench { get; set; }
         public string NameDutch { get; set; }
-        public ICollection<IngredientEF> Ingredients { get; set; }
+        public SupplierEF Supplier { get; set; }
+        public ICollection<SandwichIngredientEF> SandwichIngredients { get; set; }
     }
 }
