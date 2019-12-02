@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SMS.Shared.Enums;
+using System;
 
 namespace SMS.Shared.Tests
 {
@@ -30,6 +31,17 @@ namespace SMS.Shared.Tests
             Assert.AreEqual("some english name", ts3.ToString(EN));
             Assert.AreEqual("some french name", ts3.ToString(FR));
             Assert.AreEqual("some dutch name", ts3.ToString(NL));
+        }
+
+        [TestMethod]
+        public void Test_IncompleteTranslationThrowsException()
+        {
+            Assert.ThrowsException<ArgumentException>(() => new TranslatedString(null, null, null));
+            Assert.ThrowsException<ArgumentException>(() => new TranslatedString("", null, null));
+            Assert.ThrowsException<ArgumentException>(() => new TranslatedString(null, "", null));
+            Assert.ThrowsException<ArgumentException>(() => new TranslatedString(null, null, ""));
+            Assert.ThrowsException<ArgumentException>(() => new TranslatedString("", "", ""));
+            Assert.ThrowsException<ArgumentException>(() => new TranslatedString("\t", "   ", "\n"));
         }
     }
 }

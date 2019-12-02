@@ -27,5 +27,10 @@ namespace SMS.BusinessLayer.Domain
                 throw new InvalidSupplierException($"{nameof(Email)} cannot be null or empty");
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Name} ({Email}) - {ContactName}";
+        }
     }
 }

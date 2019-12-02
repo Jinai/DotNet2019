@@ -10,7 +10,7 @@ namespace SMS.BusinessLayer.Domain
     {
         public TranslatedString Name { get; set; }
         public Supplier Supplier { get; set; }
-        public List<Ingredient> Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
 
         public bool HasAllergen()
         {
