@@ -2,54 +2,86 @@
 using SMS.BusinessLayer.Domain;
 using SMS.Shared;
 using SMS.Shared.Enums;
+using SMS.Shared.Exceptions;
 
 namespace SMS.BusinessLayer.Tests
 {
     [TestClass]
     public class SupplierTests
     {
-        public static Language EN = Language.English;
-        public static Language FR = Language.French;
-        public static Language NL = Language.Dutch;
-
         [TestMethod]
         public void Test_ToString()
         {
-            //// Arrange
-            //var ts1 = new TranslatedString("Peanut butter and jelly sandwich", "Sandwich beurre de cacahuète et confiture", "Broodje pindakaas en jam");
-            //var ts2 = new TranslatedString("Ham and cheese sandwich", "Sandwich jambon et fromage", "Broodje ham en kaas");
-            //var ts3 = new TranslatedString("Peanut butter", "Beurre de cacahuète", "Pindakaas");
-            //var ts4 = new TranslatedString("Jelly", "Confiture", "Jam");
-            //var ts5 = new TranslatedString("Ham", "Jambon", "Ham");
-            //var ts6 = new TranslatedString("Cheese", "Fromage", "Kaas");
+            var sup = new Supplier
+            {
+                Name = "Supplier 1",
+                ContactName = "S1",
+                Email = "supplier1@gmail.com",
+                LanguageChoice = Language.English
+            };
+            Assert.AreEqual("Supplier 1 (supplier1@gmail.com) - S1", sup.ToString());
+        }
 
-            //var sup1 = new Supplier("Supplier 1", "S1", "supplier1@gmail.com", EN);
+        [TestMethod]
+        public void Test_CheckValidity_ThrowsException_WithEmptyConstructor()
+        {
+            var sup = new Supplier();
+            Assert.ThrowsException<InvalidSupplierException>(() => sup.CheckValidity());
+        }
 
-            //var sand1 = new Sandwich(ts1, sup1);
-            //var sand2 = new Sandwich(ts2, sup1);
-            //var sand3 = new Sandwich(new TranslatedString("A", "B", "C"), sup1);
+        [TestMethod]
+        public void Test_CheckValidity_ThrowsException_WhenPropertiesAreNull()
+        {
+            var sup1 = new Supplier { Name = null, ContactName = null, Email = null };
+            var sup2 = new Supplier { Name = "Name", ContactName = "ContactName", Email = null };
+            var sup3 = new Supplier { Name = "Name", ContactName = null, Email = "Email" };
+            var sup4 = new Supplier { Name = null, ContactName = "ContactName", Email = "Email" };
+            Assert.ThrowsException<InvalidSupplierException>(() => sup1.CheckValidity());
+        }
 
-            //var ing1 = new Ingredient(ts3, true);
-            //var ing2 = new Ingredient(ts4);
-            //var ing3 = new Ingredient(ts5);
-            //var ing4 = new Ingredient(ts6);
+        [TestMethod]
+        public void Test_CheckValidity_ThrowsException_WhenNameIsInvalid()
+        {
+            var sup1 = new Supplier { Name = null, ContactName = "ContactName", Email = "Email" };
+            var sup2 = new Supplier { Name = "", ContactName = "ContactName", Email = "Email" };
+            var sup3 = new Supplier { Name = "  ", ContactName = "ContactName", Email = "Email" };
+            var sup4 = new Supplier { Name = "\t", ContactName = "ContactName", Email = "Email" };
+            var sup5 = new Supplier { Name = "\n  \t ", ContactName = "ContactName", Email = "Email" };
+            Assert.ThrowsException<InvalidSupplierException>(() => sup1.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup2.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup3.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup4.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup5.CheckValidity());
+        }
 
-            //// Act
-            //sand1.Ingredients.Add(ing1);
-            //sand1.Ingredients.Add(ing2);
-            //sand2.Ingredients.Add(ing3);
-            //sand2.Ingredients.Add(ing4);
+        [TestMethod]
+        public void Test_CheckValidity_ThrowsException_WhenContactNameIsInvalid()
+        {
+            var sup1 = new Supplier { Name = "Name", ContactName = null, Email = "Email" };
+            var sup2 = new Supplier { Name = "Name", ContactName = "", Email = "Email" };
+            var sup3 = new Supplier { Name = "Name", ContactName = "  ", Email = "Email" };
+            var sup4 = new Supplier { Name = "Name", ContactName = "\t", Email = "Email" };
+            var sup5 = new Supplier { Name = "Name", ContactName = "\n  \t ", Email = "Email" };
+            Assert.ThrowsException<InvalidSupplierException>(() => sup1.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup2.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup3.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup4.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup5.CheckValidity());
+        }
 
-            //sup1.Sandwiches.Add(sand1);
-            //sup1.Sandwiches.Add(sand2);
-            //sup1.Sandwiches.Add(sand3);
-
-            //// Assert
-            //Assert.AreEqual("Supplier 1 (supplier1@gmail.com)\nPeanut butter and jelly sandwich - Peanut butter*, Jelly\nHam and cheese sandwich - Ham, Cheese\nA - ", sup1.ToString());
-            //sup1.LanguageChoice = FR;
-            //Assert.AreEqual("Supplier 1 (supplier1@gmail.com)\nSandwich beurre de cacahuète et confiture - Beurre de cacahuète*, Confiture\nSandwich jambon et fromage - Jambon, Fromage\nB - ", sup1.ToString());
-            //sup1.LanguageChoice = NL;
-            //Assert.AreEqual("Supplier 1 (supplier1@gmail.com)\nBroodje pindakaas en jam - Pindakaas*, Jam\nBroodje ham en kaas - Ham, Kaas\nC - ", sup1.ToString());
+        [TestMethod]
+        public void Test_CheckValidity_ThrowsException_WhenEmailIsInvalid()
+        {
+            var sup1 = new Supplier { Name = "Name", ContactName = "ContactName", Email = null };
+            var sup2 = new Supplier { Name = "Name", ContactName = "ContactName", Email = "" };
+            var sup3 = new Supplier { Name = "Name", ContactName = "ContactName", Email = "  " };
+            var sup4 = new Supplier { Name = "Name", ContactName = "ContactName", Email = "\t" };
+            var sup5 = new Supplier { Name = "Name", ContactName = "ContactName", Email = "\n  \t " };
+            Assert.ThrowsException<InvalidSupplierException>(() => sup1.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup2.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup3.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup4.CheckValidity());
+            Assert.ThrowsException<InvalidSupplierException>(() => sup5.CheckValidity());
         }
     }
 }

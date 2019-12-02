@@ -2,16 +2,13 @@
 using SMS.BusinessLayer.Domain;
 using SMS.Shared;
 using SMS.Shared.Enums;
+using SMS.Shared.Exceptions;
 
 namespace SMS.BusinessLayer.Tests
 {
     [TestClass]
     public class SandwichTests
     {
-        public static Language EN = Language.English;
-        public static Language FR = Language.French;
-        public static Language NL = Language.Dutch;
-
         [TestMethod]
         public void Test_ToString()
         {
@@ -39,17 +36,17 @@ namespace SMS.BusinessLayer.Tests
             sand2.Ingredients.Add(ing4);
 
             // Assert
-            Assert.AreEqual("Peanut butter and jelly sandwich - Peanut butter*, Jelly", sand1.ToString(EN));
-            Assert.AreEqual("Sandwich beurre de cacahuète et confiture - Beurre de cacahuète*, Confiture", sand1.ToString(FR));
-            Assert.AreEqual("Broodje pindakaas en jam - Pindakaas*, Jam", sand1.ToString(NL));
+            Assert.AreEqual("Peanut butter and jelly sandwich - Peanut butter*, Jelly", sand1.ToString(Language.English));
+            Assert.AreEqual("Sandwich beurre de cacahuète et confiture - Beurre de cacahuète*, Confiture", sand1.ToString(Language.French));
+            Assert.AreEqual("Broodje pindakaas en jam - Pindakaas*, Jam", sand1.ToString(Language.Dutch));
 
-            Assert.AreEqual("Ham and cheese sandwich - Ham, Cheese", sand2.ToString(EN));
-            Assert.AreEqual("Sandwich jambon et fromage - Jambon, Fromage", sand2.ToString(FR));
-            Assert.AreEqual("Broodje ham en kaas - Ham, Kaas", sand2.ToString(NL));
+            Assert.AreEqual("Ham and cheese sandwich - Ham, Cheese", sand2.ToString(Language.English));
+            Assert.AreEqual("Sandwich jambon et fromage - Jambon, Fromage", sand2.ToString(Language.French));
+            Assert.AreEqual("Broodje ham en kaas - Ham, Kaas", sand2.ToString(Language.Dutch));
 
-            Assert.AreEqual("A - ", sand3.ToString(EN));
-            Assert.AreEqual("B - ", sand3.ToString(FR));
-            Assert.AreEqual("C - ", sand3.ToString(NL));
+            Assert.AreEqual("A - ", sand3.ToString(Language.English));
+            Assert.AreEqual("B - ", sand3.ToString(Language.French));
+            Assert.AreEqual("C - ", sand3.ToString(Language.Dutch));
         }
 
         [TestMethod]
@@ -69,6 +66,17 @@ namespace SMS.BusinessLayer.Tests
             // Assert
             Assert.IsTrue(sand1.HasAllergen());
             Assert.IsFalse(sand2.HasAllergen());
+        }
+
+        [TestMethod]
+        public void Test_CheckValidity_ThrowsException_WhenPropertiesAreNull()
+        {
+            var sand1 = new Sandwich();
+            var sand2 = new Sandwich { Name = null, Supplier = new Supplier() };
+            var sand3 = new Sandwich { Name = new TranslatedString("A", "B", "C"), Supplier = null };
+            Assert.ThrowsException<InvalidSandwichException>(() => sand1.CheckValidity());
+            Assert.ThrowsException<InvalidSandwichException>(() => sand2.CheckValidity());
+            Assert.ThrowsException<InvalidSandwichException>(() => sand3.CheckValidity());
         }
     }
 }
