@@ -1,15 +1,14 @@
-﻿using SMS.Shared.DTO;
+﻿using SMS.Shared.TransferObjects;
 using System;
 
 namespace SMS.Shared.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<IngredientDTO, int> IngredientRepository { get; }
+        IRepository<IngredientTO, int> IngredientRepository { get; }
         ISandwichRepository SandwichRepository { get; }
         ISupplierRepository SupplierRepository { get; }
 
-        void Dispose();
         void Save();
     }
 }

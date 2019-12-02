@@ -1,6 +1,6 @@
-﻿namespace SMS.Shared.DTO
+﻿namespace SMS.Shared.TransferObjects
 {
-    public class IngredientDTO
+    public class IngredientTO
     {
         public int Id { get; set; }
         public TranslatedString Name { get; set; }

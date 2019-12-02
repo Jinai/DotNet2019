@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SMS.Shared;
-using SMS.Shared.DTO;
 using SMS.Shared.Interfaces;
+using SMS.Shared.TransferObjects;
 using System.Linq;
 
 namespace SMS.DataLayer.Tests
@@ -26,12 +26,12 @@ namespace SMS.DataLayer.Tests
         [TestMethod]
         public void Test_Insert()
         {
-            var ing1 = new IngredientDTO()
+            var ing1 = new IngredientTO()
             {
                 Name = new TranslatedString("Peanut butter", "Beurre de cacahuète", "Pindakaas"),
                 IsAllergen = true,
             };
-            var ing2 = new IngredientDTO()
+            var ing2 = new IngredientTO()
             {
                 Name = new TranslatedString("Jelly", "Confiture", "Jam"),
                 IsAllergen = false,

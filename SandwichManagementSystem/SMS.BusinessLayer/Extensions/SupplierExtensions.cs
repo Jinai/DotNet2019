@@ -1,76 +1,39 @@
 ﻿using SMS.BusinessLayer.Domain;
-using SMS.Shared.BTO;
-using SMS.Shared.DTO;
+using SMS.Shared.TransferObjects;
 using System;
 
 namespace SMS.BusinessLayer.Extensions
 {
     public static class SupplierExtensions
     {
-        public static SupplierBTO ToBTO(this Supplier supplier)
+        public static Supplier ToDomain(this SupplierTO supplierTO)
+        {
+            return new Supplier
+            {
+                Id = supplierTO.Id,
+                Name = supplierTO.Name,
+                ContactName = supplierTO.ContactName,
+                Email = supplierTO.Email,
+                LanguageChoice = supplierTO.LanguageChoice,
+                IsDefault = supplierTO.IsDefault
+            };
+        }
+
+        public static SupplierTO ToTO(this Supplier supplier)
         {
             if (supplier is null)
             {
                 throw new ArgumentNullException(nameof(supplier));
             }
 
-            return new SupplierBTO
+            return new SupplierTO
             {
                 Id = supplier.Id,
                 Name = supplier.Name,
                 ContactName = supplier.ContactName,
                 Email = supplier.Email,
                 LanguageChoice = supplier.LanguageChoice,
-                IsCurrentSupplier = supplier.IsCurrentSupplier
-            };
-        }
-
-        public static Supplier ToDomain(this SupplierBTO supplierBTO)
-        {
-            if (supplierBTO is null)
-            {
-                throw new ArgumentNullException(nameof(supplierBTO));
-            }
-
-            return new Supplier
-            {
-                Id = supplierBTO.Id,
-                Name = supplierBTO.Name,
-                ContactName = supplierBTO.ContactName,
-                Email = supplierBTO.Email,
-                LanguageChoice = supplierBTO.LanguageChoice,
-                IsCurrentSupplier = supplierBTO.IsCurrentSupplier
-            };
-        }
-
-        public static SupplierDTO ToDTO(this Supplier supplier)
-        {
-            if (supplier is null)
-            {
-                throw new ArgumentNullException(nameof(supplier));
-            }
-
-            return new SupplierDTO
-            {
-                Id = supplier.Id,
-                Name = supplier.Name,
-                ContactName = supplier.ContactName,
-                Email = supplier.Email,
-                LanguageChoice = supplier.LanguageChoice,
-                IsCurrentSupplier = supplier.IsCurrentSupplier
-            };
-        }
-
-        public static Supplier ToDomain(this SupplierDTO supplierDTO)
-        {
-            return new Supplier
-            {
-                Id = supplierDTO.Id,
-                Name = supplierDTO.Name,
-                ContactName = supplierDTO.ContactName,
-                Email = supplierDTO.Email,
-                LanguageChoice = supplierDTO.LanguageChoice,
-                IsCurrentSupplier = supplierDTO.IsCurrentSupplier
+                IsDefault = supplier.IsDefault
             };
         }
     }

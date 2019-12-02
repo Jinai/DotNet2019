@@ -1,15 +1,15 @@
 ﻿using SMS.BusinessLayer.Extensions;
-using SMS.Shared.BTO;
+using SMS.Shared.TransferObjects;
 
 namespace SMS.BusinessLayer.UseCases.Assistant
 {
     public partial class Assistant
     {
 
-        public bool AddSupplier(SupplierBTO supplier)
+        public bool AddSupplier(SupplierTO supplier)
         {
             // TODO: Exception handling
-            UnitOfWork.SupplierRepository.Insert(supplier.ToDomain().ToDTO());
+            UnitOfWork.SupplierRepository.Insert(supplier.ToDomain().ToTO());
             return true;
         }
     }

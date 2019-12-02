@@ -5,6 +5,7 @@ using SMS.BusinessLayer.UseCases;
 using SMS.Shared;
 using SMS.Shared.Enums;
 using SMS.Shared.Interfaces;
+using SMS.Shared.TransferObjects;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,23 +14,23 @@ namespace SMS.BusinessLayer.Tests.UseCases
     [TestClass]
     public class ParticipantTests
     {
-        public static List<Sandwich> GetTestsListOfSandwich()
+        public static List<SandwichTO> GetTestsListOfSandwich()
         {
-            Ingredient Tomate = new Ingredient(new TranslatedString("Tomato", "Tomate", "Tomaat"), false);
-            Ingredient Brie = new Ingredient(new TranslatedString("Brie", "Brie", "Brie"), true);
-            Ingredient Fromage = new Ingredient(new TranslatedString("Cheese", "Fromage", "Kaas"), true);
-            Ingredient Noix = new Ingredient(new TranslatedString("Nuts", "Noix", "Noten"), true);
-            Ingredient Beurre = new Ingredient(new TranslatedString("Butter", "Beurre", "Boter"), false);
-            Ingredient Jambon = new Ingredient(new TranslatedString("Ham", "Jambon", "Ham"), false);
-            Ingredient Roquette = new Ingredient(new TranslatedString("Arugula", "Roquette", "Rucola"), false);
-            Ingredient Salade = new Ingredient(new TranslatedString("Salad", "Salade", "Salade"), false);
-            Ingredient Pesto = new Ingredient(new TranslatedString("Pesto", "Pesto", "Pesto"), false);
-            Ingredient Oeuf = new Ingredient(new TranslatedString("Eggs", "Oeufs", "Eien"), true);
-            Ingredient Miel = new Ingredient(new TranslatedString("Honey", "Miel", "Honing"), false);
+            var Tomate = new IngredientTO { Id = 1, Name = new TranslatedString("Tomato", "Tomate", "Tomaat"), IsAllergen = false };
+            var Brie = new IngredientTO { Id = 2, Name = new TranslatedString("Brie", "Brie", "Brie"), IsAllergen = true };
+            var Fromage = new IngredientTO { Id = 3, Name = new TranslatedString("Cheese", "Fromage", "Kaas"), IsAllergen = true };
+            var Noix = new IngredientTO { Id = 4, Name = new TranslatedString("Nuts", "Noix", "Noten"), IsAllergen = true };
+            var Beurre = new IngredientTO { Id = 5, Name = new TranslatedString("Butter", "Beurre", "Boter"), IsAllergen = false };
+            var Jambon = new IngredientTO { Id = 6, Name = new TranslatedString("Ham", "Jambon", "Ham"), IsAllergen = false };
+            var Roquette = new IngredientTO { Id = 7, Name = new TranslatedString("Arugula", "Roquette", "Rucola"), IsAllergen = false };
+            var Salade = new IngredientTO { Id = 8, Name = new TranslatedString("Salad", "Salade", "Salade"), IsAllergen = false };
+            var Pesto = new IngredientTO { Id = 9, Name = new TranslatedString("Pesto", "Pesto", "Pesto"), IsAllergen = false };
+            var Oeuf = new IngredientTO { Id = 10, Name = new TranslatedString("Eggs", "Oeufs", "Eien"), IsAllergen = true };
+            var Miel = new IngredientTO { Id = 11, Name = new TranslatedString("Honey", "Miel", "Honing"), IsAllergen = false };
 
-            Sandwich Club = new Sandwich(new TranslatedString("Club", "Club", "Club"), null);
-            Sandwich BrieNoix = new Sandwich(new TranslatedString("Brie", "Brie", "Brie"), null);
-            Sandwich PestoVerde = new Sandwich(new TranslatedString("Pesto", "Pesto", "Pesto"), null);
+            SandwichTO Club = new SandwichTO { Id = 1, Name = new TranslatedString("ClubEN", "ClubFR", "ClubNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
+            SandwichTO BrieNoix = new SandwichTO { Id = 2, Name = new TranslatedString("BrieEN", "BrieFR", "BrieNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
+            SandwichTO PestoVerde = new SandwichTO { Id = 3, Name = new TranslatedString("PestoEN", "PestoFR", "PestoNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
 
             BrieNoix.Ingredients.Add(Brie);
             BrieNoix.Ingredients.Add(Miel);
@@ -45,7 +46,7 @@ namespace SMS.BusinessLayer.Tests.UseCases
             Club.Ingredients.Add(Fromage);
             Club.Ingredients.Add(Tomate);
 
-            var lst = new List<Sandwich>(); ;
+            var lst = new List<SandwichTO>(); ;
 
             lst.Add(BrieNoix);
             lst.Add(Club);

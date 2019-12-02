@@ -1,12 +1,12 @@
-﻿using SMS.Shared.DTO;
+﻿using SMS.Shared.TransferObjects;
 using System.Collections.Generic;
 
 namespace SMS.Shared.Interfaces
 {
-    public interface ISandwichRepository : IRepository<SandwichDTO, int>
+    public interface ISandwichRepository : IRepository<SandwichTO, int>
     {
-        List<SandwichDTO> GetSandwichesBySupplier(SupplierDTO supplier);
-        List<SandwichDTO> GetSandwichesByIngredient(List<IngredientDTO> ingredients);
-        List<SandwichDTO> GetSandwichesWithoutIngredient(List<IngredientDTO> ingredients);
+        List<SandwichTO> GetSandwichesBySupplier(SupplierTO supplier);
+        List<SandwichTO> GetSandwichesByIngredient(List<IngredientTO> ingredients);
+        List<SandwichTO> GetSandwichesWithoutIngredient(List<IngredientTO> ingredients);
     }
 }

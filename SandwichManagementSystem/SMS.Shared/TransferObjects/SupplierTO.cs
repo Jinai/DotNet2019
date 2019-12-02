@@ -1,14 +1,14 @@
 ﻿using SMS.Shared.Enums;
 
-namespace SMS.Shared.BTO
+namespace SMS.Shared.TransferObjects
 {
-    public class SupplierBTO
+    public class SupplierTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string ContactName { get; set; }
         public string Email { get; set; }
         public Language LanguageChoice { get; set; }
-        public bool IsCurrentSupplier { get; set; }
+        public bool IsDefault { get; set; }
     }
 }

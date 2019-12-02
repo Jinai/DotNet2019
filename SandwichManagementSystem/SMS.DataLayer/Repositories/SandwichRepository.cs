@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMS.DataLayer.Extensions;
-using SMS.Shared.DTO;
 using SMS.Shared.Interfaces;
+using SMS.Shared.TransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,38 +17,38 @@ namespace SMS.DataLayer.Repositories
             Context = context;
         }
 
-        public List<SandwichDTO> GetSandwichesBySupplier(SupplierDTO supplier)
+        public List<SandwichTO> GetSandwichesBySupplier(SupplierTO supplier)
         {
             throw new NotImplementedException();
         }
 
-        public List<SandwichDTO> GetSandwichesByIngredient(List<IngredientDTO> ingredients)
+        public List<SandwichTO> GetSandwichesByIngredient(List<IngredientTO> ingredients)
         {
             throw new NotImplementedException();
         }
 
-        public List<SandwichDTO> GetSandwichesWithoutIngredient(List<IngredientDTO> ingredients)
+        public List<SandwichTO> GetSandwichesWithoutIngredient(List<IngredientTO> ingredients)
         {
             throw new NotImplementedException();
         }
 
         #region CRUD
-        public SandwichDTO GetById(int id)
+        public SandwichTO GetById(int id)
         {
-            return Context.Sandwiches.AsNoTracking().Include(x => x.SandwichIngredients).ThenInclude(x => x.Ingredient).FirstOrDefault(x => x.Id == id).ToDTO();
+            return Context.Sandwiches.AsNoTracking().Include(x => x.SandwichIngredients).ThenInclude(x => x.Ingredient).FirstOrDefault(x => x.Id == id).ToTO();
         }
 
-        public IEnumerable<SandwichDTO> GetAll()
+        public IEnumerable<SandwichTO> GetAll()
         {
-            return Context.Sandwiches.AsNoTracking().Include(x => x.SandwichIngredients).ThenInclude(x => x.Ingredient).Select(x => x.ToDTO());
+            return Context.Sandwiches.AsNoTracking().Include(x => x.SandwichIngredients).ThenInclude(x => x.Ingredient).Select(x => x.ToTO());
         }
 
-        public void Insert(SandwichDTO entity)
+        public void Insert(SandwichTO entity)
         {
             Update(entity);
         }
 
-        public void Update(SandwichDTO entityToUpdate)
+        public void Update(SandwichTO entityToUpdate)
         {
             Context.Sandwiches.Update(entityToUpdate.ToEF());
         }
@@ -58,7 +58,7 @@ namespace SMS.DataLayer.Repositories
             Delete(GetById(id));
         }
 
-        public void Delete(SandwichDTO entityToDelete)
+        public void Delete(SandwichTO entityToDelete)
         {
             Context.Sandwiches.Remove(entityToDelete.ToEF());
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMS.DataLayer.Extensions;
-using SMS.Shared.DTO;
 using SMS.Shared.Interfaces;
+using SMS.Shared.TransferObjects;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,33 +16,33 @@ namespace SMS.DataLayer.Repositories
             Context = context;
         }
 
-        public SupplierDTO GetCurrentSupplier()
+        public SupplierTO GetCurrentSupplier()
         {
             throw new System.NotImplementedException();
         }
 
-        public void SetCurrentSupplier(SupplierDTO supplier)
+        public void SetCurrentSupplier(SupplierTO supplier)
         {
             throw new System.NotImplementedException();
         }
 
         #region CRUD
-        public SupplierDTO GetById(int id)
+        public SupplierTO GetById(int id)
         {
-            return Context.Suppliers.AsNoTracking().FirstOrDefault(x => x.Id == id).ToDTO();
+            return Context.Suppliers.AsNoTracking().FirstOrDefault(x => x.Id == id).ToTO();
         }
 
-        public IEnumerable<SupplierDTO> GetAll()
+        public IEnumerable<SupplierTO> GetAll()
         {
-            return Context.Suppliers.AsNoTracking().Select(x => x.ToDTO());
+            return Context.Suppliers.AsNoTracking().Select(x => x.ToTO());
         }
 
-        public void Insert(SupplierDTO entity)
+        public void Insert(SupplierTO entity)
         {
             Update(entity);
         }
 
-        public void Update(SupplierDTO entityToUpdate)
+        public void Update(SupplierTO entityToUpdate)
         {
             Context.Suppliers.Update(entityToUpdate.ToEF());
         }
@@ -52,7 +52,7 @@ namespace SMS.DataLayer.Repositories
             Delete(GetById(id));
         }
 
-        public void Delete(SupplierDTO entityToDelete)
+        public void Delete(SupplierTO entityToDelete)
         {
             Context.Suppliers.Remove(entityToDelete.ToEF());
         }
