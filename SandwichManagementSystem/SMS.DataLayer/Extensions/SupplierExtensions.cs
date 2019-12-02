@@ -1,44 +1,44 @@
 ﻿using SMS.DataLayer.Entities;
-using SMS.Shared.DTO;
+using SMS.Shared.TransferObjects;
 using System;
 
 namespace SMS.DataLayer.Extensions
 {
     public static class SupplierExtensions
     {
-        public static SupplierDTO ToDTO(this SupplierEF supplierEF)
+        public static SupplierTO ToTO(this SupplierEF supplierEF)
         {
             if (supplierEF is null)
             {
                 throw new ArgumentNullException(nameof(supplierEF));
             }
 
-            return new SupplierDTO
+            return new SupplierTO
             {
                 Id = supplierEF.Id,
                 Name = supplierEF.Name,
                 ContactName = supplierEF.ContactName,
                 Email = supplierEF.Email,
                 LanguageChoice = supplierEF.LanguageChoice,
-                IsCurrentSupplier = supplierEF.IsCurrentSupplier
+                IsDefault = supplierEF.IsCurrentSupplier
             };
         }
 
-        public static SupplierEF ToEF(this SupplierDTO supplierDTO)
+        public static SupplierEF ToEF(this SupplierTO supplierTO)
         {
-            if (supplierDTO is null)
+            if (supplierTO is null)
             {
-                throw new ArgumentNullException(nameof(supplierDTO));
+                throw new ArgumentNullException(nameof(supplierTO));
             }
 
             return new SupplierEF
             {
-                Id = supplierDTO.Id,
-                Name = supplierDTO.Name,
-                ContactName = supplierDTO.ContactName,
-                Email = supplierDTO.Email,
-                LanguageChoice = supplierDTO.LanguageChoice,
-                IsCurrentSupplier = supplierDTO.IsCurrentSupplier
+                Id = supplierTO.Id,
+                Name = supplierTO.Name,
+                ContactName = supplierTO.ContactName,
+                Email = supplierTO.Email,
+                LanguageChoice = supplierTO.LanguageChoice,
+                IsCurrentSupplier = supplierTO.IsDefault
             };
         }
     }

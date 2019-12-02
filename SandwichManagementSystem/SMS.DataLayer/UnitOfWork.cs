@@ -1,19 +1,18 @@
 ﻿using SMS.DataLayer.Repositories;
-using SMS.Shared.DTO;
 using SMS.Shared.Interfaces;
-using System;
+using SMS.Shared.TransferObjects;
 
 namespace SMS.DataLayer
 {
     public class UnitOfWork : IUnitOfWork
     {
         private SMSContext Context;
-        private IRepository<IngredientDTO, int> ingredientRepository;
+        private IRepository<IngredientTO, int> ingredientRepository;
         private ISandwichRepository sandwichRepository;
         private ISupplierRepository supplierRepository;
 
         #region Properties
-        public IRepository<IngredientDTO, int> IngredientRepository
+        public IRepository<IngredientTO, int> IngredientRepository
         {
             get
             {
@@ -22,7 +21,7 @@ namespace SMS.DataLayer
                 return ingredientRepository;
             }
         }
-        
+
         public ISandwichRepository SandwichRepository
         {
             get
@@ -32,7 +31,7 @@ namespace SMS.DataLayer
                 return sandwichRepository;
             }
         }
-        
+
         public ISupplierRepository SupplierRepository
         {
             get

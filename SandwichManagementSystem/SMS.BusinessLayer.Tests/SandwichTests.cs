@@ -23,14 +23,14 @@ namespace SMS.BusinessLayer.Tests
             var ts5 = new TranslatedString("Ham", "Jambon", "Ham");
             var ts6 = new TranslatedString("Cheese", "Fromage", "Kaas");
 
-            var sand1 = new Sandwich(ts1, null);
-            var sand2 = new Sandwich(ts2, null);
-            var sand3 = new Sandwich(new TranslatedString("A", "B", "C"), null);
+            var sand1 = new Sandwich { Name = ts1, Supplier = null };
+            var sand2 = new Sandwich { Name = ts2, Supplier = null };
+            var sand3 = new Sandwich { Name = new TranslatedString("A", "B", "C"), Supplier = null };
 
-            var ing1 = new Ingredient(ts3, true);
-            var ing2 = new Ingredient(ts4);
-            var ing3 = new Ingredient(ts5);
-            var ing4 = new Ingredient(ts6);
+            var ing1 = new Ingredient { Name = ts3, IsAllergen = true };
+            var ing2 = new Ingredient { Name = ts4 };
+            var ing3 = new Ingredient { Name = ts5 };
+            var ing4 = new Ingredient { Name = ts6 };
 
             // Act
             sand1.Ingredients.Add(ing1);
@@ -59,8 +59,8 @@ namespace SMS.BusinessLayer.Tests
             var sand1 = new Sandwich();
             var sand2 = new Sandwich();
 
-            var ing1 = new Ingredient() { IsAllergen = true };
-            var ing2 = new Ingredient() { IsAllergen = false };
+            var ing1 = new Ingredient { IsAllergen = true };
+            var ing2 = new Ingredient { IsAllergen = false };
 
             // Act
             sand1.Ingredients.Add(ing1);

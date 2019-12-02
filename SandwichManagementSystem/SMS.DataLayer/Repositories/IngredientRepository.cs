@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SMS.DataLayer.Extensions;
-using SMS.Shared.DTO;
 using SMS.Shared.Interfaces;
+using SMS.Shared.TransferObjects;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SMS.DataLayer.Repositories
 {
-    public class IngredientRepository : IRepository<IngredientDTO, int>
+    public class IngredientRepository : IRepository<IngredientTO, int>
     {
         private readonly SMSContext Context;
 
@@ -17,22 +17,22 @@ namespace SMS.DataLayer.Repositories
         }
 
         #region CRUD
-        public IngredientDTO GetById(int id)
+        public IngredientTO GetById(int id)
         {
-            return Context.Ingredients.AsNoTracking().Include(x => x.SandwichIngredients).FirstOrDefault(x => x.Id == id).ToDTO();
+            return Context.Ingredients.AsNoTracking().Include(x => x.SandwichIngredients).FirstOrDefault(x => x.Id == id).ToTO();
         }
 
-        public IEnumerable<IngredientDTO> GetAll()
+        public IEnumerable<IngredientTO> GetAll()
         {
-            return Context.Ingredients.AsNoTracking().Include(x => x.SandwichIngredients).Select(x => x.ToDTO());
+            return Context.Ingredients.AsNoTracking().Include(x => x.SandwichIngredients).Select(x => x.ToTO());
         }
 
-        public void Insert(IngredientDTO entity)
+        public void Insert(IngredientTO entity)
         {
             Update(entity);
         }
 
-        public void Update(IngredientDTO entityToUpdate)
+        public void Update(IngredientTO entityToUpdate)
         {
             Context.Ingredients.Update(entityToUpdate.ToEF());
         }
@@ -42,7 +42,7 @@ namespace SMS.DataLayer.Repositories
             Delete(GetById(id));
         }
 
-        public void Delete(IngredientDTO entityToDelete)
+        public void Delete(IngredientTO entityToDelete)
         {
             Context.Ingredients.Remove(entityToDelete.ToEF());
         }

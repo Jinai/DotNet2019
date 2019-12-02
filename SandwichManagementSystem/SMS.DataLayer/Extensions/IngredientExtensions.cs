@@ -1,20 +1,20 @@
 ﻿using SMS.DataLayer.Entities;
 using SMS.Shared;
-using SMS.Shared.DTO;
+using SMS.Shared.TransferObjects;
 using System;
 
 namespace SMS.DataLayer.Extensions
 {
     public static class IngredientExtensions
     {
-        public static IngredientDTO ToDTO(this IngredientEF ingredientEF)
+        public static IngredientTO ToTO(this IngredientEF ingredientEF)
         {
             if (ingredientEF is null)
             {
                 throw new ArgumentNullException(nameof(ingredientEF));
             }
 
-            return new IngredientDTO
+            return new IngredientTO
             {
                 Id = ingredientEF.Id,
                 Name = new TranslatedString(ingredientEF.NameEnglish, ingredientEF.NameFrench, ingredientEF.NameDutch),
@@ -22,20 +22,20 @@ namespace SMS.DataLayer.Extensions
             };
         }
 
-        public static IngredientEF ToEF(this IngredientDTO ingredientDTO)
+        public static IngredientEF ToEF(this IngredientTO ingredientTO)
         {
-            if (ingredientDTO is null)
+            if (ingredientTO is null)
             {
-                throw new ArgumentNullException(nameof(ingredientDTO));
+                throw new ArgumentNullException(nameof(ingredientTO));
             }
 
             return new IngredientEF
             {
-                Id = ingredientDTO.Id,
-                NameEnglish = ingredientDTO.Name.English,
-                NameFrench = ingredientDTO.Name.French,
-                NameDutch = ingredientDTO.Name.Dutch,
-                IsAllergen = ingredientDTO.IsAllergen
+                Id = ingredientTO.Id,
+                NameEnglish = ingredientTO.Name.English,
+                NameFrench = ingredientTO.Name.French,
+                NameDutch = ingredientTO.Name.Dutch,
+                IsAllergen = ingredientTO.IsAllergen
             };
         }
     }

@@ -18,8 +18,8 @@ namespace SMS.BusinessLayer.Tests
             var ts1 = new TranslatedString("Ham", "Jambon", "Ham");
             var ts2 = new TranslatedString("Cheese", "Fromage", "Kaas");
 
-            var ing1 = new Ingredient(ts1);
-            var ing2 = new Ingredient(ts2);
+            var ing1 = new Ingredient { Name = ts1 };
+            var ing2 = new Ingredient { Name = ts2 };
 
             Assert.AreEqual("Ham", ing1.ToString(EN));
             Assert.AreEqual("Jambon", ing1.ToString(FR));
@@ -36,8 +36,8 @@ namespace SMS.BusinessLayer.Tests
             var ts1 = new TranslatedString("Peanut", "Cacahuète", "Pinda");
             var ts2 = new TranslatedString("Egg", "Oeuf", "Ei");
 
-            var ing1 = new Ingredient(ts1, true);
-            var ing2 = new Ingredient(ts2, true);
+            var ing1 = new Ingredient { Name = ts1, IsAllergen = true };
+            var ing2 = new Ingredient { Name = ts2, IsAllergen = true };
 
             Assert.AreEqual("Peanut*", ing1.ToString(EN));
             Assert.AreEqual("Cacahuète*", ing1.ToString(FR));

@@ -1,10 +1,10 @@
-﻿using SMS.Shared.DTO;
+﻿using SMS.Shared.TransferObjects;
 
 namespace SMS.Shared.Interfaces
 {
-    public interface ISupplierRepository : IRepository<SupplierDTO, int>
+    public interface ISupplierRepository : IRepository<SupplierTO, int>
     {
-        SupplierDTO GetCurrentSupplier();
-        void SetCurrentSupplier(SupplierDTO supplier);
+        SupplierTO GetCurrentSupplier();
+        void SetCurrentSupplier(SupplierTO supplier);
     }
 }
