@@ -14,13 +14,17 @@ namespace SMS.BusinessLayer.Extensions
                 throw new ArgumentNullException(nameof(sandwichTO));
             }
 
-            return new Sandwich
+            var sandwich = new Sandwich
             {
                 Id = sandwichTO.Id,
                 Name = sandwichTO.Name,
                 Supplier = sandwichTO.Supplier.ToDomain(),
                 Ingredients = sandwichTO.Ingredients?.Select(x => x.ToDomain()).ToList()
             };
+
+            sandwich.CheckValidity();
+
+            return sandwich;
         }
 
         public static SandwichTO ToTO(this Sandwich sandwich)

@@ -8,7 +8,7 @@ namespace SMS.BusinessLayer.Extensions
     {
         public static Supplier ToDomain(this SupplierTO supplierTO)
         {
-            return new Supplier
+            var supplier = new Supplier
             {
                 Id = supplierTO.Id,
                 Name = supplierTO.Name,
@@ -17,6 +17,10 @@ namespace SMS.BusinessLayer.Extensions
                 LanguageChoice = supplierTO.LanguageChoice,
                 IsDefault = supplierTO.IsDefault
             };
+
+            supplier.CheckValidity();
+
+            return supplier;
         }
 
         public static SupplierTO ToTO(this Supplier supplier)
