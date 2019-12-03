@@ -20,7 +20,7 @@ namespace SMS.DataLayer.Extensions
                 ContactName = supplierEF.ContactName,
                 Email = supplierEF.Email,
                 LanguageChoice = supplierEF.LanguageChoice,
-                IsDefault = supplierEF.IsCurrentSupplier
+                IsDefault = supplierEF.IsDefault
             };
         }
 
@@ -38,7 +38,7 @@ namespace SMS.DataLayer.Extensions
                 ContactName = supplierTO.ContactName,
                 Email = supplierTO.Email,
                 LanguageChoice = supplierTO.LanguageChoice,
-                IsCurrentSupplier = supplierTO.IsDefault
+                IsDefault = supplierTO.IsDefault
             };
         }
     }

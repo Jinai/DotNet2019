@@ -24,7 +24,7 @@ namespace SMS.BusinessLayer.UseCases.Assistant
                 UnitOfWork.SupplierRepository.Insert(supplier.ToDomain().ToTO());
                 if (supplier.IsDefault)
                 {
-                    UnitOfWork.SupplierRepository.SetCurrentSupplier(supplier.ToDomain().ToTO());
+                    UnitOfWork.SupplierRepository.SetDefaultSupplier(supplier.ToDomain().ToTO());
                 }
                 return true;
             }
