@@ -13,6 +13,6 @@ namespace SMS.DataLayer.Entities
         public string NameFrench { get; set; }
         public string NameDutch { get; set; }
         public bool IsAllergen { get; set; }
-        public ICollection<SandwichIngredientEF> SandwichIngredients { get; set; }
+        public ICollection<MealCompositionEF> MealCompositions { get; set; }
     }
 }

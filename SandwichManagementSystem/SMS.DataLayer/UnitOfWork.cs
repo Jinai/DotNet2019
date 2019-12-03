@@ -8,7 +8,7 @@ namespace SMS.DataLayer
     {
         private SMSContext Context;
         private IRepository<IngredientTO, int> ingredientRepository;
-        private ISandwichRepository sandwichRepository;
+        private IMealRepository mealRepository;
         private ISupplierRepository supplierRepository;
 
         #region Properties
@@ -22,13 +22,13 @@ namespace SMS.DataLayer
             }
         }
 
-        public ISandwichRepository SandwichRepository
+        public IMealRepository MealRepository
         {
             get
             {
-                if (sandwichRepository == null)
-                    sandwichRepository = new SandwichRepository(Context);
-                return sandwichRepository;
+                if (mealRepository == null)
+                    mealRepository = new MealRepository(Context);
+                return mealRepository;
             }
         }
 
@@ -58,7 +58,7 @@ namespace SMS.DataLayer
             Context.Dispose();
             Context = null;
 
-            sandwichRepository = null;
+            mealRepository = null;
         }
     }
 }

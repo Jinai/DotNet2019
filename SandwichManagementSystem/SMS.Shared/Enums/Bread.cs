@@ -1,4 +1,4 @@
-﻿namespace SMS.BusinessLayer.Domain
+﻿namespace SMS.Shared.Enums
 {
     public enum Bread
     {

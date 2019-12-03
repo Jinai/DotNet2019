@@ -1,20 +1,22 @@
-﻿using SMS.Shared.TransferObjects;
+﻿using SMS.BusinessLayer.Extensions;
+using SMS.Shared.TransferObjects;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SMS.BusinessLayer.UseCases
 {
     public partial class Participant
     {
-        public List<SandwichTO> GetCurrentMenu()
+        public List<MealTO> GetCurrentMenu()
         {
             var Supplier = UnitOfWork.SupplierRepository.GetDefaultSupplier();
 
-            return UnitOfWork.SandwichRepository.GetSandwichesBySupplier(Supplier);
+            return UnitOfWork.MealRepository.GetMealsBySupplier(Supplier);
 
-            //return UnitOfWork.SandwichRepository
-            //        .GetSandwichesBySupplier(Supplier)
-            //        .Select(x => x.ToDomain().ToBTO())
-            //        .ToList();
+            //return UnitOfWork.MealRepository
+            //       .GetMealsBySupplier(Supplier)
+            //       .Select(x => x.ToDomain().ToTO())
+            //       .ToList();
         }
     }
 }

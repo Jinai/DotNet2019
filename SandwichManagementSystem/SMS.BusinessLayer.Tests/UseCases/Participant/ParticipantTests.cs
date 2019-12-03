@@ -1,20 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using SMS.BusinessLayer.Domain;
-using SMS.BusinessLayer.UseCases;
 using SMS.Shared;
 using SMS.Shared.Enums;
-using SMS.Shared.Interfaces;
 using SMS.Shared.TransferObjects;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SMS.BusinessLayer.Tests.UseCases
 {
     [TestClass]
     public class ParticipantTests
     {
-        public static List<SandwichTO> GetTestsListOfSandwich()
+        public static List<MealTO> GetTestListOfMeals()
         {
             var Tomate = new IngredientTO { Id = 1, Name = new TranslatedString("Tomato", "Tomate", "Tomaat"), IsAllergen = false };
             var Brie = new IngredientTO { Id = 2, Name = new TranslatedString("Brie", "Brie", "Brie"), IsAllergen = true };
@@ -28,9 +23,9 @@ namespace SMS.BusinessLayer.Tests.UseCases
             var Oeuf = new IngredientTO { Id = 10, Name = new TranslatedString("Eggs", "Oeufs", "Eien"), IsAllergen = true };
             var Miel = new IngredientTO { Id = 11, Name = new TranslatedString("Honey", "Miel", "Honing"), IsAllergen = false };
 
-            SandwichTO Club = new SandwichTO { Id = 1, Name = new TranslatedString("ClubEN", "ClubFR", "ClubNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
-            SandwichTO BrieNoix = new SandwichTO { Id = 2, Name = new TranslatedString("BrieEN", "BrieFR", "BrieNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
-            SandwichTO PestoVerde = new SandwichTO { Id = 3, Name = new TranslatedString("PestoEN", "PestoFR", "PestoNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
+            MealTO Club = new MealTO { Id = 1, MealType = MealType.Sandwich, Name = new TranslatedString("ClubEN", "ClubFR", "ClubNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
+            MealTO BrieNoix = new MealTO { Id = 2, MealType = MealType.Sandwich, Name = new TranslatedString("BrieEN", "BrieFR", "BrieNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
+            MealTO PestoVerde = new MealTO { Id = 3, MealType = MealType.Sandwich, Name = new TranslatedString("PestoEN", "PestoFR", "PestoNL"), Supplier = new SupplierTO { Id = 33, Name = "Supplier1" }, Ingredients = new List<IngredientTO>() };
 
             BrieNoix.Ingredients.Add(Brie);
             BrieNoix.Ingredients.Add(Miel);
@@ -46,28 +41,13 @@ namespace SMS.BusinessLayer.Tests.UseCases
             Club.Ingredients.Add(Fromage);
             Club.Ingredients.Add(Tomate);
 
-            var lst = new List<SandwichTO>(); ;
+            var lst = new List<MealTO>(); ;
 
             lst.Add(BrieNoix);
             lst.Add(Club);
             lst.Add(PestoVerde);
 
             return lst;
-        }
-
-        [TestMethod]
-        public void Test_AfficherMenu()
-        {
-            //var fakeSandwichRepo = new Mock<IRepository<Sandwich, int>>();
-            //var fakeIngredientRepo = new Mock<IRepository<Ingredient, int>>();
-
-            //fakeSandwichRepo.Setup(x => x.GetAll()).Returns(GetTestsListOfSandwich());
-
-            //var participant = new Participant(fakeSandwichRepo.Object, fakeIngredientRepo.Object);
-
-            //var listMenu = participant.AfficherMenu("Test", Language.English);
-
-            //Assert.AreEqual(3, listMenu.Count());
         }
     }
 }
