@@ -4,7 +4,7 @@ namespace SMS.Shared.Interfaces
 {
     public interface ISupplierRepository : IRepository<SupplierTO, int>
     {
-        SupplierTO GetCurrentSupplier();
-        void SetCurrentSupplier(SupplierTO supplier);
+        SupplierTO GetDefaultSupplier();
+        void SetDefaultSupplier(SupplierTO supplier);
     }
 }

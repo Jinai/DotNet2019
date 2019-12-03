@@ -7,7 +7,7 @@ namespace SMS.BusinessLayer.UseCases
     {
         public List<SandwichTO> GetCurrentMenu()
         {
-            var Supplier = UnitOfWork.SupplierRepository.GetCurrentSupplier();
+            var Supplier = UnitOfWork.SupplierRepository.GetDefaultSupplier();
 
             return UnitOfWork.SandwichRepository.GetSandwichesBySupplier(Supplier);
 

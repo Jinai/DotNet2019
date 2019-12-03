@@ -16,12 +16,12 @@ namespace SMS.DataLayer.Repositories
             Context = context;
         }
 
-        public SupplierTO GetCurrentSupplier()
+        public SupplierTO GetDefaultSupplier()
         {
             throw new System.NotImplementedException();
         }
 
-        public void SetCurrentSupplier(SupplierTO supplier)
+        public void SetDefaultSupplier(SupplierTO supplier)
         {
             throw new System.NotImplementedException();
         }

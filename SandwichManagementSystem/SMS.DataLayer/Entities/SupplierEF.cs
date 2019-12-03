@@ -14,7 +14,7 @@ namespace SMS.DataLayer.Entities
         public string ContactName { get; set; }
         public string Email { get; set; }
         public Language LanguageChoice { get; set; }
-        public bool IsCurrentSupplier { get; set; }
+        public bool IsDefault { get; set; }
         public ICollection<SandwichEF> Sandwiches { get; set; }
     }
 }
