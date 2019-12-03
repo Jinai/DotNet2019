@@ -15,18 +15,18 @@ namespace SMS.Shared.Tests
         public void Test_ToString()
         {
             // Arrange
-            var ts1 = new TranslatedString("Peanut butter and jelly sandwich", "Sandwich beurre de cacahuète et confiture", "Broodje pindakaas en jam");
-            var ts2 = new TranslatedString("Ham and cheese sandwich", "Sandwich jambon et fromage", "Broodje ham en kaas");
+            var ts1 = new TranslatedString("Peanut butter and jelly", "Beurre de cacahuète et confiture", "Pindakaas en jam");
+            var ts2 = new TranslatedString("Ham and cheese", "Jambon et fromage", "Ham en kaas");
             var ts3 = new TranslatedString("some english name", "some french name", "some dutch name");
 
             // Assert
-            Assert.AreEqual("Peanut butter and jelly sandwich", ts1.ToString(EN));
-            Assert.AreEqual("Sandwich beurre de cacahuète et confiture", ts1.ToString(FR));
-            Assert.AreEqual("Broodje pindakaas en jam", ts1.ToString(NL));
+            Assert.AreEqual("Peanut butter and jelly", ts1.ToString(EN));
+            Assert.AreEqual("Beurre de cacahuète et confiture", ts1.ToString(FR));
+            Assert.AreEqual("Pindakaas en jam", ts1.ToString(NL));
 
-            Assert.AreEqual("Ham and cheese sandwich", ts2.ToString(EN));
-            Assert.AreEqual("Sandwich jambon et fromage", ts2.ToString(FR));
-            Assert.AreEqual("Broodje ham en kaas", ts2.ToString(NL));
+            Assert.AreEqual("Ham and cheese", ts2.ToString(EN));
+            Assert.AreEqual("Jambon et fromage", ts2.ToString(FR));
+            Assert.AreEqual("Ham en kaas", ts2.ToString(NL));
 
             Assert.AreEqual("some english name", ts3.ToString(EN));
             Assert.AreEqual("some french name", ts3.ToString(FR));

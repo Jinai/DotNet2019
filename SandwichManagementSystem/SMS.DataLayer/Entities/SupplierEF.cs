@@ -15,6 +15,6 @@ namespace SMS.DataLayer.Entities
         public string Email { get; set; }
         public Language LanguageChoice { get; set; }
         public bool IsDefault { get; set; }
-        public ICollection<SandwichEF> Sandwiches { get; set; }
+        public ICollection<MealEF> Meals { get; set; }
     }
 }

@@ -19,12 +19,12 @@ namespace SMS.DataLayer.Repositories
         #region CRUD
         public IngredientTO GetById(int id)
         {
-            return Context.Ingredients.AsNoTracking().Include(x => x.SandwichIngredients).FirstOrDefault(x => x.Id == id).ToTO();
+            return Context.Ingredients.AsNoTracking().Include(x => x.MealCompositions).FirstOrDefault(x => x.Id == id).ToTO();
         }
 
         public IEnumerable<IngredientTO> GetAll()
         {
-            return Context.Ingredients.AsNoTracking().Include(x => x.SandwichIngredients).Select(x => x.ToTO());
+            return Context.Ingredients.AsNoTracking().Include(x => x.MealCompositions).Select(x => x.ToTO());
         }
 
         public void Insert(IngredientTO entity)

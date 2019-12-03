@@ -11,28 +11,28 @@ namespace SMS.DataLayer
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=SMS;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=MealDB;Trusted_Connection=True;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SandwichIngredientEF>().HasKey(si => new { si.SandwichId, si.IngredientId });
+            modelBuilder.Entity<MealCompositionEF>().HasKey(mc => new { mc.MealId, mc.IngredientId });
 
-            modelBuilder.Entity<SandwichIngredientEF>()
-                .HasOne<SandwichEF>(s => s.Sandwich)
-                .WithMany(s => s.SandwichIngredients)
-                .HasForeignKey(si => si.SandwichId);
+            modelBuilder.Entity<MealCompositionEF>()
+                .HasOne<MealEF>(mc => mc.Meal)
+                .WithMany(m => m.MealCompositions)
+                .HasForeignKey(mc => mc.MealId);
 
-            modelBuilder.Entity<SandwichIngredientEF>()
-                .HasOne<IngredientEF>(i => i.Ingredient)
-                .WithMany(i => i.SandwichIngredients)
-                .HasForeignKey(si => si.IngredientId);
+            modelBuilder.Entity<MealCompositionEF>()
+                .HasOne<IngredientEF>(mc => mc.Ingredient)
+                .WithMany(i => i.MealCompositions)
+                .HasForeignKey(mc => mc.IngredientId);
         }
 
         public DbSet<SupplierEF> Suppliers { get; set; }
-        public DbSet<SandwichEF> Sandwiches { get; set; }
+        public DbSet<MealEF> Meals { get; set; }
         public DbSet<IngredientEF> Ingredients { get; set; }
-        public DbSet<SandwichIngredientEF> SandwichIngredients { get; set; }
+        public DbSet<MealCompositionEF> MealCompositions { get; set; }
     }
 }
