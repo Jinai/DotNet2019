@@ -13,12 +13,16 @@ namespace SMS.BusinessLayer.Extensions
                 throw new ArgumentNullException(nameof(ingredientTO));
             }
 
-            return new Ingredient
+            var ingredient = new Ingredient
             {
                 Id = ingredientTO.Id,
                 Name = ingredientTO.Name,
                 IsAllergen = ingredientTO.IsAllergen
             };
+
+            ingredient.CheckValidity();
+
+            return ingredient;
         }
 
         public static IngredientTO ToTO(this Ingredient ingredient)

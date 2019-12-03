@@ -9,10 +9,12 @@ namespace SMS.BusinessLayer.UseCases
         {
             var Supplier = UnitOfWork.SupplierRepository.GetCurrentSupplier();
 
-            return UnitOfWork.SandwichRepository
-                    .GetSandwichesBySupplier(Supplier);
-                    //.Select(x => x.ToDomain().ToBTO())
-                    // .ToList();
+            return UnitOfWork.SandwichRepository.GetSandwichesBySupplier(Supplier);
+
+            //return UnitOfWork.SandwichRepository
+            //        .GetSandwichesBySupplier(Supplier)
+            //        .Select(x => x.ToDomain().ToBTO())
+            //        .ToList();
         }
     }
 }

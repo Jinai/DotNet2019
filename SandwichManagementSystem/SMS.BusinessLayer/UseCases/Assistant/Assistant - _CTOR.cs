@@ -1,4 +1,5 @@
 ﻿using SMS.Shared.Interfaces;
+using System;
 
 namespace SMS.BusinessLayer.UseCases.Assistant
 {
@@ -8,7 +9,7 @@ namespace SMS.BusinessLayer.UseCases.Assistant
 
         public Assistant(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            UnitOfWork = unitOfWork;
+            UnitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         }
     }
 }
