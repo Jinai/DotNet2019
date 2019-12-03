@@ -8,6 +8,11 @@ namespace SMS.BusinessLayer.Extensions
     {
         public static Supplier ToDomain(this SupplierTO supplierTO)
         {
+            if (supplierTO is null)
+            {
+                throw new ArgumentNullException(nameof(supplierTO));
+            }
+
             var supplier = new Supplier
             {
                 Id = supplierTO.Id,

@@ -1,13 +1,17 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using SMS.BusinessLayer.UseCases;
 using SMS.Shared;
 using SMS.Shared.Enums;
+using SMS.Shared.Interfaces;
 using SMS.Shared.TransferObjects;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace SMS.BusinessLayer.Tests.UseCases
+namespace SMS.BusinessLayer.Tests.UseCases.ParticipantTests
 {
     [TestClass]
-    public class ParticipantTests
+    public class Participant_GetCurrentMenuTests
     {
         public static List<MealTO> GetTestListOfMeals()
         {
@@ -48,6 +52,29 @@ namespace SMS.BusinessLayer.Tests.UseCases
             lst.Add(PestoVerde);
 
             return lst;
+        }
+
+        [TestMethod]
+        public void Test_GetCurrentMenu_HasCorrectCountOfMeals()
+        {
+            // Arrange
+            var defaultSupplier = new SupplierTO { Id = 1, Name = "Fake supplier" };
+            var mockMealRepo = new Mock<IMealRepository>();
+            var mockSupplierRepo = new Mock<ISupplierRepository>();
+            var mockUnitOfWork = new Mock<IUnitOfWork>();
+            mockMealRepo.Setup(x => x.GetMealsBySupplier(It.IsAny<SupplierTO>())).Returns(GetTestListOfMeals());
+            mockSupplierRepo.Setup(x => x.GetDefaultSupplier()).Returns(defaultSupplier);
+            mockUnitOfWork.Setup(x => x.MealRepository).Returns(mockMealRepo.Object);
+            mockUnitOfWork.Setup(x => x.SupplierRepository).Returns(mockSupplierRepo.Object);
+
+            // Act
+            var participant = new Participant(mockUnitOfWork.Object);
+            var menu = participant.GetCurrentMenu();
+
+            // Assert
+            Assert.AreEqual(3, menu.Count());
+            mockMealRepo.Verify(x => x.GetMealsBySupplier(It.IsAny<SupplierTO>()), Times.Once);
+            mockSupplierRepo.Verify(x => x.GetDefaultSupplier(), Times.Once);
         }
     }
 }

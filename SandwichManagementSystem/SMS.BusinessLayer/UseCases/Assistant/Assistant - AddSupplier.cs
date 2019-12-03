@@ -14,6 +14,7 @@ namespace SMS.BusinessLayer.UseCases.Assistant
             {
                 throw new ArgumentNullException(nameof(supplier));
             }
+
             if (supplier.Id != 0)
             {
                 throw new InvalidSupplierException();

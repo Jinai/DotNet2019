@@ -4,7 +4,7 @@ using SMS.Shared;
 using SMS.Shared.Enums;
 using SMS.Shared.Exceptions;
 
-namespace SMS.BusinessLayer.Tests
+namespace SMS.BusinessLayer.Tests.Domain
 {
     [TestClass]
     public class MealTests
